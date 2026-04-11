@@ -4,9 +4,9 @@ import java.time.Instant;
 import java.util.UUID;
 
 public record PostDto(
-        UUID id,
+        UUID uuid,
         String title,
         String content,
-        Instant createdAt
+        String createdAt
 ) {
 }

@@ -1,3 +1,6 @@
+// user-defined variables
+val mapstructVersion = "1.6.3";
+
 plugins {
     java
     id("org.springframework.boot") version "4.0.5"
@@ -35,6 +38,8 @@ dependencies {
     testCompileOnly("org.projectlombok:lombok")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testAnnotationProcessor("org.projectlombok:lombok")
+    implementation("org.mapstruct:mapstruct:${mapstructVersion}")
+    annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
 }
 
 tasks.withType<Test> {

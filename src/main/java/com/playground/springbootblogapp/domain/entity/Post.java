@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -24,5 +25,5 @@ public class Post {
     private String content;
 
     @Column(name = "created_at")
-    private Instant created;
+    private LocalDateTime created;
 }
