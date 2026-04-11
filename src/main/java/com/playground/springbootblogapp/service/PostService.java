@@ -6,8 +6,6 @@ import com.playground.springbootblogapp.domain.request.PostRequest;
 import com.playground.springbootblogapp.exception.NotFoundException;
 import com.playground.springbootblogapp.repository.PostRepository;
 import lombok.AllArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -37,9 +35,9 @@ public class PostService {
     }
 
     public Post editPost(UUID uuid, PostRequest request) {
-        postRepository.findById(uuid).orElseThrow(NotFoundException::new);
+        Post post = postRepository.findById(uuid).orElseThrow(NotFoundException::new);
 
-        Post post = postMapper.toEntity(request);
+        postMapper.update(request, post);
 
         return postRepository.save(post);
     }
