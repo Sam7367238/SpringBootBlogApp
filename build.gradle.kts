@@ -1,5 +1,5 @@
 // user-defined variables
-val mapstructVersion = "1.6.3";
+val mapstructVersion = "1.6.3"
 
 plugins {
     java

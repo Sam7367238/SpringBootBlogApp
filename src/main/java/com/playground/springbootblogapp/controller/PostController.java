@@ -8,8 +8,6 @@ import com.playground.springbootblogapp.exception.NotFoundException;
 import com.playground.springbootblogapp.service.PostService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -25,8 +23,6 @@ import java.util.UUID;
 @RequestMapping("/posts")
 @AllArgsConstructor
 class PostController {
-    private final Logger logger = LoggerFactory.getLogger(PostController.class);
-
     private final PostService postService;
     private final PostMapper postMapper;
 
