@@ -1,4 +1,4 @@
-package com.playground.springbootblogapp.domain.request;
+package com.playground.springbootblogapp.post;
 
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;

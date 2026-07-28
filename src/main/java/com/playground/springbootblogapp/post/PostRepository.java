@@ -1,6 +1,5 @@
-package com.playground.springbootblogapp.repository;
+package com.playground.springbootblogapp.post;
 
-import com.playground.springbootblogapp.domain.entity.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,10 +1,9 @@
-package com.playground.springbootblogapp.domain.entity;
+package com.playground.springbootblogapp.post;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.UUID;
 

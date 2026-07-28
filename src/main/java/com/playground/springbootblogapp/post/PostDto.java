@@ -1,4 +1,4 @@
-package com.playground.springbootblogapp.domain.dto;
+package com.playground.springbootblogapp.post;
 
 import java.util.UUID;
 

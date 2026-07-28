@@ -1,8 +1,5 @@
-package com.playground.springbootblogapp.domain.mapper;
+package com.playground.springbootblogapp.post;
 
-import com.playground.springbootblogapp.domain.dto.PostDto;
-import com.playground.springbootblogapp.domain.entity.Post;
-import com.playground.springbootblogapp.domain.request.PostRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

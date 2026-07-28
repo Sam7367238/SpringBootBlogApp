@@ -1,10 +1,5 @@
-package com.playground.springbootblogapp.service;
+package com.playground.springbootblogapp.post;
 
-import com.playground.springbootblogapp.domain.entity.Post;
-import com.playground.springbootblogapp.domain.mapper.PostMapper;
-import com.playground.springbootblogapp.domain.request.PostRequest;
-import com.playground.springbootblogapp.exception.NotFoundException;
-import com.playground.springbootblogapp.repository.PostRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,7 +19,7 @@ public class PostService {
     }
 
     public Post getPost(UUID uuid) {
-        return postRepository.findById(uuid).orElseThrow(NotFoundException::new);
+        return postRepository.findById(uuid).orElseThrow(PostNotFoundException::new);
     }
 
     public Post createPost(PostRequest request) {
@@ -35,7 +30,7 @@ public class PostService {
     }
 
     public Post editPost(UUID uuid, PostRequest request) {
-        Post post = postRepository.findById(uuid).orElseThrow(NotFoundException::new);
+        Post post = postRepository.findById(uuid).orElseThrow(PostNotFoundException::new);
 
         postMapper.update(request, post);
 
@@ -43,7 +38,7 @@ public class PostService {
     }
 
     public void deletePost(UUID uuid) {
-        postRepository.findById(uuid).orElseThrow(NotFoundException::new);
+        postRepository.findById(uuid).orElseThrow(PostNotFoundException::new);
         postRepository.deleteById(uuid);
     }
 }

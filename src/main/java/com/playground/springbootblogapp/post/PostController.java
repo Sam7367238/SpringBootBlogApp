@@ -1,11 +1,5 @@
-package com.playground.springbootblogapp.controller;
+package com.playground.springbootblogapp.post;
 
-import com.playground.springbootblogapp.domain.dto.PostDto;
-import com.playground.springbootblogapp.domain.entity.Post;
-import com.playground.springbootblogapp.domain.mapper.PostMapper;
-import com.playground.springbootblogapp.domain.request.PostRequest;
-import com.playground.springbootblogapp.exception.NotFoundException;
-import com.playground.springbootblogapp.service.PostService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -28,7 +22,7 @@ class PostController {
 
     @GetMapping
     public Page<PostDto> getAllPosts(Pageable pageable) {
-        Page<Post> posts =  postService.getPageablePosts(pageable);
+        Page<Post> posts = postService.getPageablePosts(pageable);
 
         return posts.map(postMapper::toDto);
     }
@@ -67,7 +61,7 @@ class PostController {
         return ResponseEntity.noContent().build();
     }
 
-    @ExceptionHandler(NotFoundException.class)
+    @ExceptionHandler(PostNotFoundException.class)
     public ResponseEntity<Map<String, String>> handleNotFoundException() {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", "Post not found."));
     }
