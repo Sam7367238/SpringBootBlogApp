@@ -18,18 +18,15 @@ import java.util.UUID;
 @AllArgsConstructor
 class PostController {
     private final PostService postService;
-    private final PostMapper postMapper;
 
     @GetMapping
     public Page<PostDto> getAllPosts(Pageable pageable) {
-        Page<Post> posts = postService.getPageablePosts(pageable);
-
-        return posts.map(postMapper::toDto);
+        return postService.getPageablePosts(pageable);
     }
 
     @GetMapping("/{uuid}")
     public PostDto getPost(@PathVariable UUID uuid) {
-        return postMapper.toDto(postService.getPost(uuid));
+        return postService.getPost(uuid);
     }
 
     @PostMapping
@@ -37,11 +34,11 @@ class PostController {
             UriComponentsBuilder uriBuilder,
             @Valid @RequestBody PostRequest request
     ) {
-        Post post = postService.createPost(request);
+        PostDto postDto = postService.createPost(request);
 
-        URI uri = uriBuilder.path("/posts/{uuid}").buildAndExpand(post.getUuid()).toUri();
+        URI uri = uriBuilder.path("/posts/{uuid}").buildAndExpand(postDto.uuid()).toUri();
 
-        return ResponseEntity.created(uri).body(postMapper.toDto(post));
+        return ResponseEntity.created(uri).body(postDto);
     }
 
     @PutMapping("/{uuid}")
@@ -49,9 +46,9 @@ class PostController {
             @PathVariable UUID uuid,
             @Valid @RequestBody PostRequest request
        ) {
-        Post post = postService.editPost(uuid, request);
+        PostDto postDto = postService.editPost(uuid, request);
 
-        return ResponseEntity.ok(postMapper.toDto(post));
+        return ResponseEntity.ok(postDto);
     }
 
     @DeleteMapping("/{uuid}")

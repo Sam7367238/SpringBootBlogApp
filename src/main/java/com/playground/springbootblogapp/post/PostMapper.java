@@ -10,7 +10,10 @@ public interface PostMapper {
     PostDto toDto(Post post);
 
     @Mapping(target = "created", ignore = true)
+    @Mapping(target = "uuid", ignore = true)
     Post toEntity(PostRequest request);
 
+    @Mapping(target = "created", ignore = true)
+    @Mapping(target = "uuid", ignore = true)
     void update(PostRequest request, @MappingTarget Post post);
 }

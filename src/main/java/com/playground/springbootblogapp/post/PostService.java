@@ -14,27 +14,33 @@ public class PostService {
     private final PostRepository postRepository;
     private final PostMapper postMapper;
 
-    public Page<Post> getPageablePosts(Pageable pageable) {
-        return postRepository.findAll(pageable);
+    public Page<PostDto> getPageablePosts(Pageable pageable) {
+        return postRepository.findAll(pageable).map(postMapper::toDto);
     }
 
-    public Post getPost(UUID uuid) {
-        return postRepository.findById(uuid).orElseThrow(PostNotFoundException::new);
+    public PostDto getPost(UUID uuid) {
+        Post post = postRepository.findById(uuid).orElseThrow(PostNotFoundException::new);
+
+        return postMapper.toDto(post);
     }
 
-    public Post createPost(PostRequest request) {
+    public PostDto createPost(PostRequest request) {
         Post post = postMapper.toEntity(request);
         post.setCreated(LocalDateTime.now());
 
-        return postRepository.save(post);
+        postRepository.save(post);
+
+        return postMapper.toDto(post);
     }
 
-    public Post editPost(UUID uuid, PostRequest request) {
+    public PostDto editPost(UUID uuid, PostRequest request) {
         Post post = postRepository.findById(uuid).orElseThrow(PostNotFoundException::new);
 
         postMapper.update(request, post);
 
-        return postRepository.save(post);
+        postRepository.save(post);
+
+        return postMapper.toDto(post);
     }
 
     public void deletePost(UUID uuid) {
