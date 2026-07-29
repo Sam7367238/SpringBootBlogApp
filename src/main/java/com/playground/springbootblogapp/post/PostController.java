@@ -32,7 +32,7 @@ class PostController {
     @PostMapping
     public ResponseEntity<PostDto> createPost(
             UriComponentsBuilder uriBuilder,
-            @Valid @RequestBody PostRequest request
+            @Valid @RequestBody CreatePostRequest request
     ) {
         PostDto postDto = postService.createPost(request);
 
@@ -44,7 +44,7 @@ class PostController {
     @PutMapping("/{uuid}")
     public ResponseEntity<PostDto> updatePost(
             @PathVariable UUID uuid,
-            @Valid @RequestBody PostRequest request
+            @Valid @RequestBody UpdatePostRequest request
        ) {
         PostDto postDto = postService.editPost(uuid, request);
 

@@ -7,13 +7,16 @@ import org.mapstruct.MappingTarget;
 @Mapper(componentModel = "spring")
 public interface PostMapper {
     @Mapping(source = "created", target = "createdAt", dateFormat = "dd-MM-yyyy HH:mm:ss")
+    @Mapping(target = "userId", source = "user.id")
     PostDto toDto(Post post);
 
     @Mapping(target = "created", ignore = true)
     @Mapping(target = "uuid", ignore = true)
-    Post toEntity(PostRequest request);
+    @Mapping(target = "user", ignore = true)
+    Post toEntity(CreatePostRequest request);
 
     @Mapping(target = "created", ignore = true)
     @Mapping(target = "uuid", ignore = true)
-    void update(PostRequest request, @MappingTarget Post post);
+    @Mapping(target = "user", ignore = true)
+    void update(UpdatePostRequest request, @MappingTarget Post post);
 }

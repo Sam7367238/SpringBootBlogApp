@@ -1,5 +1,6 @@
 package com.playground.springbootblogapp.post;
 
+import com.playground.springbootblogapp.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,4 +26,8 @@ public class Post {
 
     @Column(name = "created_at")
     private LocalDateTime created;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

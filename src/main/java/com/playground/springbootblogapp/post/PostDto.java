@@ -6,6 +6,7 @@ public record PostDto(
         UUID uuid,
         String title,
         String content,
-        String createdAt
+        String createdAt,
+        Long userId
 ) {
 }
