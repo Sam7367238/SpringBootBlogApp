@@ -1,7 +1,0 @@
-spring:
-  application:
-    name: SpringBootBlogApp
-  datasource:
-    url:
-    username:
-    password:

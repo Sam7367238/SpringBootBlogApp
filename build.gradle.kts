@@ -1,5 +1,6 @@
 // user-defined variables
 val mapstructVersion = "1.6.3"
+val springDotenvVersion = "5.1.0"
 
 plugins {
     java
@@ -40,6 +41,8 @@ dependencies {
     testAnnotationProcessor("org.projectlombok:lombok")
     implementation("org.mapstruct:mapstruct:${mapstructVersion}")
     annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+    implementation(platform("me.paulschwarz:spring-dotenv-bom:${springDotenvVersion}"))
+    developmentOnly("me.paulschwarz:springboot4-dotenv")
 }
 
 tasks.withType<Test> {
