@@ -1,6 +1,7 @@
 // user-defined variables
 val mapstructVersion = "1.6.3"
 val springDotenvVersion = "5.1.0"
+val jjwtVersion = "0.13.0"
 
 plugins {
     java
@@ -43,6 +44,9 @@ dependencies {
     annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
     implementation(platform("me.paulschwarz:spring-dotenv-bom:${springDotenvVersion}"))
     developmentOnly("me.paulschwarz:springboot4-dotenv")
+    implementation("io.jsonwebtoken:jjwt-api:${jjwtVersion}")
+    runtimeOnly("io.jsonwebtoken:jjwt-impl:${jjwtVersion}")
+    runtimeOnly("io.jsonwebtoken:jjwt-jackson:${jjwtVersion}")
 }
 
 tasks.withType<Test> {
