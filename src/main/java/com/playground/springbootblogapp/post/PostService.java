@@ -2,8 +2,6 @@ package com.playground.springbootblogapp.post;
 
 import com.playground.springbootblogapp.authentication.AuthenticationService;
 import com.playground.springbootblogapp.user.User;
-import com.playground.springbootblogapp.user.UserRepository;
-import com.playground.springbootblogapp.user.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

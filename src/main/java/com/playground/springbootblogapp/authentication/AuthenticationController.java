@@ -1,6 +1,5 @@
 package com.playground.springbootblogapp.authentication;
 
-import com.playground.springbootblogapp.user.UserMapper;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class AuthenticationController {
     private final JwtConfig jwtConfig;
-    private final UserMapper userMapper;
     private final AuthenticationService authenticationService;
 
     @PostMapping("/login")
