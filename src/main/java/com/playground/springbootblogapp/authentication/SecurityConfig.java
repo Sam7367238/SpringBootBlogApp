@@ -55,9 +55,7 @@ public class SecurityConfig {
                 )
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(c -> {
-                    featureSecurityRules.forEach(rule -> {
-                        rule.configure(c);
-                    });
+                    featureSecurityRules.forEach(rule -> rule.configure(c));
 
                     c.anyRequest().authenticated();
                 })
