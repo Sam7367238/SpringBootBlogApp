@@ -10,9 +10,6 @@ public record CreatePostRequest(
 
         @NotNull(message = "Please pass in the content")
         @Length(min = 3, message = "The content must be a minimum of 3 characters long")
-        String content,
-
-        @NotNull(message = "Please pass in the user ID")
-        Long userId
+        String content
 ) {
 }
